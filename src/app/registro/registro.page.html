@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+  <ion-back-button></ion-back-button>
+    </ion-buttons>
+
+    <ion-title>Registro</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+    <ion-card-title>Registro</ion-card-title>
+    </ion-card-header> 
+    <ion-card-content>
+      <form [formGroup]= "formularioRegistro">
+        <ion-item>
+          <ion-label position="floating">Nombre</ion-label>
+          <ion-input formControlName="nombre"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">contraseña</ion-label>
+          <ion-input formControlName="contrasena" type="password"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Documento</ion-label>
+          <ion-input formControlName="documento"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Direcion</ion-label>
+          <ion-input formControlName="direcion"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Correo</ion-label>
+          <ion-input formControlName="correo" type="mail"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Celular</ion-label>
+          <ion-input formControlName="celular"></ion-input>
+        </ion-item>
+        <br>
+        <ion-button (click)="guardar()">
+          Registrarse
+        </ion-button>
+      </form>
+    </ion-card-content>
+    </ion-card>
+
+</ion-content>
