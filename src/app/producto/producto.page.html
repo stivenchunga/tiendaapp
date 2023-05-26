@@ -1,0 +1,48 @@
+<ion-content>
+  <ion-card mode="ios">
+    <ion-card-header>
+      <ion-card-title>Agrege su producto</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-card >
+        <ion-card-content>
+          <form [formGroup]= "formularioProducto">
+            <ion-item>
+              <ion-label position="floating">Selecione categoria</ion-label>
+              <ion-select interface="action-sheet" mode="ios" formControlName="categoria" placeholder="Seleciona un tipo">
+                <ion-select-option *ngFor="let cat of categorias" [value]="cat.categoria">{{ cat.categoria }}</ion-select-option>
+              </ion-select>
+            </ion-item>
+            <ion-item>
+              <ion-label position="floating">Nombre</ion-label>
+              <ion-input formControlName="bonbre"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label position="floating">Color</ion-label>
+              <ion-input formControlName="color"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label position="floating">Tipo</ion-label>
+              <ion-input formControlName="tipo"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label position="floating">Talla</ion-label>
+              <ion-input formControlName="talla"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label position="floating">Precio</ion-label>
+              <ion-input formControlName="precio"></ion-input>
+            </ion-item>
+            </form>
+            <br>
+            <ion-button (click)="aceptar()">
+              Guardar
+            </ion-button>
+            <ion-button (click)="cancelar()">
+              Cancelar
+            </ion-button>
+        </ion-card-content>
+      </ion-card>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

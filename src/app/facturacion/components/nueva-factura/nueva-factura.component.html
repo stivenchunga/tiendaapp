@@ -1,0 +1,60 @@
+<ion-content>
+  <ion-grid>
+    <ion-row>
+
+      <ion-col size="12">
+        <ion-text color="primary">
+          <h3>Añade productos</h3>
+        </ion-text>
+      </ion-col>
+      <form [formGroup]="formularioFactura">
+        <ion-col size="12">
+          <ion-row>
+            <ion-col size="12">
+              <ion-item>
+                <ion-label position="floating">Nombre</ion-label>
+                <ion-input formControlName="nombre"></ion-input>
+              </ion-item>
+            </ion-col>
+            <ion-col size="12">
+              <ion-item>
+                <ion-label position="floating">Tipo factura</ion-label>
+                <ion-select interface="action-sheet" mode="ios" formControlName="tipoFactura" placeholder="Seleciona un tipo">
+                  <ion-select-option value="electronica">Electronica</ion-select-option>
+                  <ion-select-option value="digital">Digital</ion-select-option>
+                </ion-select>
+              </ion-item>
+            </ion-col>
+            <ion-col size="12"> 
+              <ion-item>
+                <ion-label position="floating">Productos disponibles</ion-label>
+                <ion-select mode="ios" (ionChange)="productoSeleccionado($event)" interface="action-sheet" formControlName="extra" placeholder="Seleciona un producto">
+                  <ion-select-option *ngFor="let item of productos"  [value]="item.id">{{item.bonbre}}: {{item.precio}}</ion-select-option>
+                </ion-select>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+        </ion-col>
+      </form>
+
+      <ion-col size="12">
+        <ion-title class="titulo_contenedor">
+          <h2 class="titulo_productos">Productos seleccionados</h2>
+        </ion-title>
+        <ion-row>
+          <ion-col size="12">
+            <ion-text class="productos_sel" *ngFor="let item of produtoSeleccionados; let i = index" >Producto: {{item.bonbre}}, Precio: {{item.precio}} <ion-icon name="trash-outline" (click)="eliminarProducto(i)" color="danger"></ion-icon></ion-text>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+
+      <ion-col size="12">
+        <ion-buttons>
+          <button (click)="cancelar()" color="primary" ion-button>Cancelar</button>
+          <button (click)="aceptar()" ion-button>{{btn}}</button>
+        </ion-buttons>
+      </ion-col>
+
+    </ion-row>
+  </ion-grid>
+</ion-content>

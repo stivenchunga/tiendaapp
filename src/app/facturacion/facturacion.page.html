@@ -1,0 +1,101 @@
+
+<ion-header>
+  <ion-card>
+    <ion-card-header>
+      <ion-toolbar>
+        <ion-title>Tus {{muest}}</ion-title>
+        <ion-buttons slot="end" color="primary" (click)="presentActionSheet()">
+          <ion-icon class="tamano-icon" name="menu-outline"></ion-icon>
+        </ion-buttons> 
+      </ion-toolbar>
+    </ion-card-header>
+  </ion-card>
+</ion-header>
+
+<ion-content>
+  <ion-card mode="ios" *ngIf="muest === 'productos'">
+    <ion-card-content>
+      <ion-card *ngFor="let pr of produ">
+        <ion-card-content>
+          <div>
+            <label for="">Nonbre: </label> {{pr.bonbre}}
+          </div>
+          <div>
+            <label for="">Color: </label>{{pr.color}}
+          </div>
+          <div>
+            <label for="">Tipo: </label>{{pr.tipo}}
+          </div>
+          <div>
+            <label for="">Talla: </label>{{pr.talla}}
+          </div>
+          <div>
+            <label for="">Precio: </label>{{pr.precio}}
+          </div>
+          <div>
+            <label for="">Categoria: </label>{{pr.categoria}}
+          </div>
+        </ion-card-content>
+      </ion-card>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card mode="ios" *ngIf="muest === 'facturas'" >
+    <ion-card-content>
+      <ion-card *ngFor="let f of faturas">
+        <ion-card-content>
+          <div>
+            <label for="">Nonbre: </label> {{f.nombre}}
+          </div>
+          <div>
+            <label for="">Tipo: </label>{{f.tipo}}
+          </div>
+          <div class="subArreglo" *ngFor="let subf of f.productos" >
+            <div>
+              <label for="">Nonbre: </label> {{subf.bonbre}}
+            </div>
+            <div>
+              <label for="">Tipo: </label>{{subf.tipo}}
+            </div>
+            <div>
+              <label for="">Color: </label>{{subf.color}}
+            </div>
+            <div>
+              <label for="">Talla: </label>{{subf.talla}}
+            </div>
+            <div>
+              <label for="">pecio: </label>{{subf.precio}}
+            </div>
+            <div>
+              <label for="">Categoria: </label>{{subf.categoria}}
+            </div>
+          </div>
+          <ion-button  expand="full" (click)="retomar(f.id)">
+            Retomar
+          </ion-button>
+        </ion-card-content>
+      </ion-card>
+    </ion-card-content>
+  </ion-card>
+  <!-- <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button (click)="presentActionSheet()">
+      <ion-icon name="menu-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab> -->
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <ion-tabs>
+      <ion-tab-bar slot="bottom">
+        <ion-tab-button (click)="muestra('facturas')">
+          <ion-icon name="newspaper-outline"></ion-icon>
+          Facturas
+        </ion-tab-button>
+        <ion-tab-button (click)="muestra('productos')">
+          <ion-icon name="pricetags-outline"></ion-icon>
+          Productos
+        </ion-tab-button>
+      </ion-tab-bar>
+    </ion-tabs>
+  </ion-toolbar>
+</ion-footer>
